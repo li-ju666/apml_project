@@ -92,7 +92,8 @@ for match in data:
 
     print("=======================================================")
 
-for _, v in teams.items():
-    print(f"{v.name}: {round(v.skill.mu, 2)}-{round(v.skill.var, 2)}")
-
-print(f"Overall accuracy: {correct_predictions/num_predictions}")
+with open("result.txt", "w") as f:
+    f.write("name, mu, var\n")
+    for _, v in teams.items():
+        f.write(f"{v.name}, {round(v.skill.mu, 4)}, {round(v.skill.var, 4)}\n")
+    f.write(f"==========================\nPrediction accuracy: {correct_predictions/num_predictions}")
